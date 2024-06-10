@@ -1,0 +1,60 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                sh './gradlew assemble'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh './gradlew test'
+            }
+        }
+    }
+}
+******************
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                sh './gradlew assemble'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh './gradlew test'
+            }
+        }
+    }
+}
+**************
+# Navigate to the root directory of your local repository
+cd path/to/your/local/repository
+
+# Create and open the Jenkinsfile
+echo 'pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                sh "./gradlew assemble"
+            }
+        }
+        stage("Test") {
+            steps {
+                sh "./gradlew test"
+            }
+        }
+    }
+}' > Jenkinsfile
+
+# Add the Jenkinsfile to the Git staging area
+git add Jenkinsfile
+
+# Commit the Jenkinsfile
+git commit -m "Add Jenkinsfile for CI"
+
+# Push the Jenkinsfile to GitHub
+git push origin main
